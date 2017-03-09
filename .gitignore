@@ -3,3 +3,6 @@
 
 # Composer
 vendor/
+
+# Application
+docker-compose.yml
