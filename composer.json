@@ -1,0 +1,31 @@
+{
+    "name": "kaz231/fb-liked-pages-fetcher",
+    "license": "",
+    "description": "service responsible for fetching of user's liked pages from facebook using graph api",
+    "homepage": "http://github.com/kaz231/events-FbLikedPagesFetcher",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Kamil Zajac",
+            "email": "kaz231@outlook.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "facebook/graph-sdk": "^5.4",
+        "symfony/console": "^3.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kaz231\\FbLikedPagesFetcher\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kaz231\\FbLikedPagesFetcher\\Test\\": "test/"
+        }
+    }
+}

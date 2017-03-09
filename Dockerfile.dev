@@ -1,0 +1,5 @@
+FROM kaz231/alpine-php7-dev:latest
+
+LABEL maintainer "Kamil Zajac <kaz231@outlook.com>"
+
+ENV APP_ENV dev

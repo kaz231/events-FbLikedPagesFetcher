@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+    fb-liked-pages-fetcher-dev:
+        build:
+            context: ./
+            dockerfile: Dockerfile.dev
+        image: kaz231/fb-liked-pages-fetcher-dev
+        volumes:
+            - ./:/var/app
+        environment:
+            SERVICE_ENVIRONMENT: "dev"
+            FACEBOOK_APP_ID: "<FACEBOOK_APP_ID>"
+            FACEBOOK_APP_SECRET: "<FACEBOOK_APP_SECRET>"

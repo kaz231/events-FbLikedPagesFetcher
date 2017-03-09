@@ -1,0 +1,24 @@
+language: python
+sudo: required
+
+services:
+    - docker
+
+env:
+    global:
+        - DOCKER_REPOSITORY=kaz231/fb-liked-pages-fetcher
+        - DOCKER_REPOSITORY_TEST=kaz231/fb-liked-pages-fetcher-test
+
+before_install:
+    - docker build -f Dockerfile.test -t $DOCKER_REPOSITORY_TEST .
+
+install:
+    - docker run $DOCKER_REPOSITORY_TEST composer install
+
+script:
+    - docker run $DOCKER_REPOSITORY_TEST ./vendor/bin/phpunit -c config/phpunit.xml --testsuite unit
+    - docker run $DOCKER_REPOSITORY_TEST ./vendor/bin/phpunit -c config/phpunit.xml --testsuite integration
+
+cache:
+     directiories:
+        - $HOME/.composer/cache
