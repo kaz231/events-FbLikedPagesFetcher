@@ -16,8 +16,8 @@ install:
     - docker run -v $(pwd):/var/app $DOCKER_REPOSITORY_TEST composer install
 
 script:
-    - docker run $DOCKER_REPOSITORY_TEST ./vendor/bin/phpunit -c config/phpunit.xml --testsuite unit
-    - docker run $DOCKER_REPOSITORY_TEST ./vendor/bin/phpunit -c config/phpunit.xml --testsuite integration
+    - docker run -v $(pwd):/var/app $DOCKER_REPOSITORY_TEST ./vendor/bin/phpunit -c config/phpunit.xml --testsuite unit
+    - docker run -v $(pwd):/var/app $DOCKER_REPOSITORY_TEST ./vendor/bin/phpunit -c config/phpunit.xml --testsuite integration
 
 cache:
      directiories:
