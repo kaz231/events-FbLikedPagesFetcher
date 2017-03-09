@@ -13,7 +13,7 @@ before_install:
     - docker build -f Dockerfile.test -t $DOCKER_REPOSITORY_TEST .
 
 install:
-    - docker run $DOCKER_REPOSITORY_TEST composer install
+    - docker run -v $(pwd):/var/app $DOCKER_REPOSITORY_TEST composer install
 
 script:
     - docker run $DOCKER_REPOSITORY_TEST ./vendor/bin/phpunit -c config/phpunit.xml --testsuite unit
