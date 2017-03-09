@@ -37,8 +37,7 @@ class ClientFactory
         if ($this->environment->isProd()) {
             return new GraphClient(
                 $this->getFacebook(),
-                $accessToken,
-                new JsonResponseResolver()
+                $accessToken
             );
         }
 

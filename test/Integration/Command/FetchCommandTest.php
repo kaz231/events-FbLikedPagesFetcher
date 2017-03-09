@@ -28,9 +28,13 @@ class FetchCommandTest extends TestCase
     {
         $this->givenLikedPages([
             [
-                'name' => 'TestPage',
-                'id' => '12345',
-                'created_time' => '2017-02-19T11:32:45+0000'
+                'name' => 'TestPage1',
+                'id' => '12345678',
+                'created_time' => [
+                    'date' => '2012-03-19 07:53:18.000000',
+                    'timezone_type' => '1',
+                    'timezone' => '+00:00'
+                ]
             ]
         ]);
         $this->givenAccessToken('my_secret_token');
@@ -41,7 +45,7 @@ class FetchCommandTest extends TestCase
 
         $this->thenStatusCodeShouldBeEqualZero();
         $this->thenListOfPagesShouldBeNotEmpty();
-        $this->thenPageShouldBeFetched('12345');
+        $this->thenPageShouldBeFetched('12345678');
     }
 
     private function thenStatusCodeShouldBeEqualZero()

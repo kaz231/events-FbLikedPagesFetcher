@@ -12,3 +12,15 @@ services:
             SERVICE_ENVIRONMENT: "dev"
             FACEBOOK_APP_ID: "<FACEBOOK_APP_ID>"
             FACEBOOK_APP_SECRET: "<FACEBOOK_APP_SECRET>"
+
+    fb-liked-pages-fetcher-test-all:
+        build:
+            context: ./
+            dockerfile: Dockerfile.test
+        image: kaz231/fb-liked-pages-fetcher-test
+        volumes:
+            - ./:/var/app
+        environment:
+            FACEBOOK_APP_ID: "1234566787"
+            FACEBOOK_APP_SECRET: "asdsad7sd67sdhasj"
+        command: ./vendor/bin/phpunit -c config/phpunit.xml

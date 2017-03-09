@@ -2,6 +2,7 @@
 namespace Kaz231\FbLikedPagesFetcher\Facebook;
 
 use Facebook\Facebook;
+use Facebook\GraphNodes\GraphNode;
 use Kaz231\FbLikedPagesFetcher\Facebook\Response\ResponseResolver;
 
 /**
@@ -16,20 +17,29 @@ class GraphClient implements Client
     /** @var string */
     private $accessToken;
 
-    /** @var ResponseResolver */
-    private $responseResolver;
-
-    public function __construct(Facebook $fb, string $accessToken, ResponseResolver $responseResolver)
+    public function __construct(Facebook $fb, string $accessToken)
     {
         $this->fb = $fb;
         $this->accessToken = $accessToken;
-        $this->responseResolver = $responseResolver;
     }
 
     public function getLikedPages(): array
     {
-        $response = $this->fb->get('/me/likes', $this->accessToken);
+        $graphEdge = null;
+        $likedPages = [];
 
-        return $this->responseResolver->fromBody($response->getBody());
+        do {
+            if ($graphEdge === null) {
+                $response = $this->fb->get('/me/likes', $this->accessToken);
+                $graphEdge = $response->getGraphEdge();
+            }
+
+            foreach ($graphEdge->getIterator() as $likedPage) {
+                /** @var GraphNode $likedPage */
+                $likedPages[] = $likedPage->asArray();
+            }
+        } while(null !== ($graphEdge = $this->fb->next($graphEdge)));
+
+        return $likedPages;
     }
 }

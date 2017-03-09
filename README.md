@@ -19,7 +19,7 @@ docker run \
 
 where:
 
-- __\<fb-access-token\>__ is user's access token (read more [here](https://developers.facebook.com/docs/facebook-login/access-tokens/#usertokens))
+- __\<fb-access-token\>__ is user's access token (read more [here](https://developers.facebook.com/docs/facebook-login/access-tokens/#usertokens)) with __user_likes__ permission
 - __\<APP_ID\>__ is ID of your FB's application
 - __\<APP_SECRET\>__ is a secret key for your FB's application
 
@@ -30,17 +30,29 @@ Execution of above command will print list of user's liked pages on Facebook as 
    {
       "name":"LikedPage1",
       "id":"1254526551355146",
-      "created_time":"2017-03-07T07:22:32+0000"
+      "created_time": {
+        "date":"2017-03-07 07:22:32.000000",
+        "timezone_type":1,
+        "timezone":"+00:00"
+      }
    },
    {
       "name":"LikedPage2",
       "id":"128412943493106",
-      "created_time":"2017-03-07T07:14:31+0000"
+      "created_time": {
+        "date":"2017-03-07 07:22:32.000000",
+        "timezone_type":1,
+        "timezone":"+00:00"
+      }
    },
    {
       "name":"LikedPageN",
       "id":"110605342308112",
-      "created_time":"2017-02-28T18:05:12+0000"
+      "created_time": {
+        "date":"2017-03-07 07:22:32.000000",
+        "timezone_type":1,
+        "timezone":"+00:00"
+      }
    }
 ]
 ```
