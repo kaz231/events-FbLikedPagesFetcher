@@ -3,6 +3,8 @@ FbLikedPagesFetcher
 
 Service is responsible for fetching of liked pages by a given FB user using graph API.
 
+[![Build Status](https://travis-ci.org/kaz231/events-FbLikedPagesFetcher.svg?branch=master)](https://travis-ci.org/kaz231/events-FbLikedPagesFetcher)
+
 ### Usage
 
 Service shares a single cli command that could be used in the following way:
